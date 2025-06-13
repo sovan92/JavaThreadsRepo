@@ -53,3 +53,41 @@ public static class InventoryCounter{
 }
 
 ```
+- What is a Critical Section .
+- What is an Atomic operation .
+- How to Guard critical section - Locking syncronization .
+- 2 ways to use sync keyword .
+- Syncronized is applied per object. Syncronised is used per lock.
+- All assignments to objects are atomic
+- assignment to 32 bit is atomic (byte, short, int)
+- asignment to (long and double) are not atomic .
+- java.util.concurrent.atomic brings atomic operations.
+
+
+- clets look at a class called Metrics and determine where do we need syncronization
+
+```java
+class Main{
+
+     public static class Metrics {
+        private long count = 0;
+        private double average = 0.0;
+
+        // Syncronization needed . 
+        public void addSample(long sample){
+            double currentSum = average * count;
+            count++;
+            average = (currentSum+sample)/count;
+        }
+
+        // Assignment requires no syncs. 
+        public double getAverage(){
+            return average;
+        }
+    }
+}
+```
+
+
+
+
