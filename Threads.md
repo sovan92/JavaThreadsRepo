@@ -94,7 +94,7 @@ class Main{
 class Main{
 
      public static class Metrics {
-        private long count = 0;
+        private volatile long count = 0;
         private volatile double average = 0.0;
 
         // Syncronization needed . 
@@ -116,6 +116,25 @@ Summary
 - Assignement to reference.
 - AAssignment to double and long using volatile keyword.
 - Knowledge of atomic operation is key to high performance.
-- 
+
+## Race Condition and Data Race 
+
+- When multiple threads are accessing the shared resource. Atleast one of them is modifying the resource. THe timing of the thread can cause incorrect result. 
+
+### Data Race. 
+Somtime the CPU executes staatements for performance and hardware utilizations. 
+They will do so while maintaining the correctness of the code. 
+Doing so can cause data race. 
+```java
+x = 1;
+y = x+2;
+```
+Now these two may not be executed out of order, as one is dependent on other. 
+```java
+x++;
+y++;
+```
+For these two can't be guarenteed to execute in order, so data race can happen . Here declaring the shared variable as volatile, will not cause compiler to take precidence of one variable to other, so variable's order of execution is maintained. 
+
 
 
