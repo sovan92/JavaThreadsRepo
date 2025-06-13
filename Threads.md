@@ -64,7 +64,7 @@ public static class InventoryCounter{
 - java.util.concurrent.atomic brings atomic operations.
 
 
-- clets look at a class called Metrics and determine where do we need syncronization
+- lets look at a class called Metrics and determine where do we need syncronization
 
 ```java
 class Main{
@@ -87,7 +87,35 @@ class Main{
     }
 }
 ```
+- We see that add sample is not atomic operation . So you need to add the syncronized keyword.
+- Then the write to variable average is not atomic and the getAverage method therefore is not atomic. So you need to add volatile keyword inorder to ensure atomicity.
 
+```java
+class Main{
 
+     public static class Metrics {
+        private long count = 0;
+        private volatile double average = 0.0;
+
+        // Syncronization needed . 
+        public syncronized void addSample(long sample){
+            double currentSum = average * count;
+            count++;
+            average = (currentSum+sample)/count;
+        }
+
+        // Assignment requires no syncs. 
+        public double getAverage(){
+            return average;
+        }
+    }
+}
+```
+Summary 
+- Assignement to primitive types without using long and double is atomic.
+- Assignement to reference.
+- AAssignment to double and long using volatile keyword.
+- Knowledge of atomic operation is key to high performance.
+- 
 
 
