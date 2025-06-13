@@ -134,7 +134,33 @@ Now these two may not be executed out of order, as one is dependent on other.
 x++;
 y++;
 ```
+## Fine grained locking , or course grained locking . 
+
+
+## Deadlock . 
+
 For these two can't be guarenteed to execute in order, so data race can happen . Here declaring the shared variable as volatile, will not cause compiler to take precidence of one variable to other, so variable's order of execution is maintained. 
+### Deadlock stratergies 
+- Mutual exclusion - Only one thread  can have exclusive access.
+- Hold and wait
+- Non preemtive allocation .
+- Avoid circular wait. (Provide same order of locking resource. )
+
+- Using watchdog for deadlock detection .
+- Thread inrupton is not possible in syncronized.
+- try lock is not possible for sync.
+
+### Reentrant lock
+- A reentrant lock is an obvious solution for the syncronization .
+- Query methods
+    - getQueuedThreads() - returns a list of threads waiting to acquire a lock .
+    - getOwner() - gets the thread that currently owns the lock .
+    - isHeldByCurrentThread() - Queries if the lock held by the current thread.
+    - isLocked() - Queries if the lock is held by any thread. 
+
+
+
+
 
 
 
