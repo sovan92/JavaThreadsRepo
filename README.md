@@ -3,7 +3,7 @@ Thisis my java threads repo .
 
 ## Comprehensive Java threads learning
 
-# Java Threading Comprehensive Learning Plan
+# == Java Threading Comprehensive Learning Plan==
 
 Hey! Threading in Java is one of those topics that can seem intimidating at first, but once you break it down systematically, it becomes much more manageable. Let me walk you through a comprehensive plan that'll take you from the basics to advanced concepts.
 
