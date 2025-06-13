@@ -7,6 +7,8 @@ Threads enter the critical sections without having knowledge of other threads at
 
 ## Syncronized is Monitor . 
 
+Montor lock provides one thread at a time. 
+
 ```java
 public static class InventoryCounter{
     private int items = 0;
@@ -23,4 +25,31 @@ public static class InventoryCounter{
         return items;
     }
 }
+
+```
+Generarally you want less code in in the critical sections. 
+
+
+```java
+
+public static class InventoryCounter{
+    private int items = 0;
+    Object lock = new Object();
+    public void increment(){
+        syncronized(this.lock){
+            items++;
+        }
+    }
+
+    public void decrement(){
+        syncronized(this.lock){
+            items--;
+        }
+    }  
+
+    public int getItems(){
+        return items;
+    }
+}
+
 ```
