@@ -161,8 +161,9 @@ For these two can't be guarenteed to execute in order, so data race can happen .
 - Generally reentrant lock and syncronized keyword don't provide the guarenteed fairness in the locking mechanism.
 - How to provide fairness in the Reentrantlock .
 - Lock lock = new ReentrantLock(true); THis might reduce the throughput of the application .
+- 
 ### Interuptive locking of lock. 
-
+- This is a feature provided by Reentrant lock. 
 
 
 
